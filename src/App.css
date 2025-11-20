@@ -18,7 +18,7 @@ body, html {
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
-  background: radial-gradient(circle at 20% 30%, #8712d6, #db1cdb 70%);
+  background: radial-gradient(circle at 20% 30%, #6e0edc, #5e2ddb 70%);
   overflow: hidden;
 }
 
