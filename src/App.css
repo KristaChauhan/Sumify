@@ -18,7 +18,7 @@ body, html {
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
-  background: radial-gradient(circle at 20% 30%, #6a14cb, #4507e0 70%);
+  background: radial-gradient(circle at 20% 30%, #8459e1, #ae51e0 70%);
   overflow: hidden;
 }
 
@@ -32,7 +32,7 @@ body, html {
       at 27% 37%, hsla(230, 70%, 10%, 0.8) 0px, transparent 0%
     ),
     radial-gradient(at 97% 21%, hsla(300, 59%, 47%, 0.526) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, hsla(270, 56%, 47%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(270, 62%, 60%, 0.5) 0px, transparent 50%),
     radial-gradient(at 10% 29%, hsla(0, 1%, 41%, 0.7) 0px, transparent 50%),
     radial-gradient(at 97% 96%, hsla(230, 47%, 49%, 0.5) 0px, transparent 50%),
     radial-gradient(at 33% 50%, hsla(300, 48%, 57%, 0.4) 0px, transparent 50%),
@@ -103,7 +103,6 @@ body, html {
 .blue_gradient {
   @apply font-black bg-gradient-to-r from-black via-purple-700 to-pink-500 bg-clip-text text-transparent;
 }
-
 .summary_box {
-  @apply rounded-xl border border-gray-200 bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4 text-gray-200;
+  @apply rounded-xl border border-gray-200 bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4 text-white;
 }
