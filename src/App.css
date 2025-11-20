@@ -18,7 +18,7 @@ body, html {
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
-  background: radial-gradient(circle at 20% 30%, #6e0edc, #5e2ddb 70%);
+  background: radial-gradient(circle at 20% 30%, #6a14cb, #4507e0 70%);
   overflow: hidden;
 }
 
@@ -31,12 +31,12 @@ body, html {
   background-image: radial-gradient(
       at 27% 37%, hsla(230, 70%, 10%, 0.8) 0px, transparent 0%
     ),
-    radial-gradient(at 97% 21%, hsla(300, 60%, 48%, 0.5) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, hsla(270, 70%, 52%, 0.5) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, hsla(0, 4%, 16%, 0.7) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, hsla(230, 38%, 49%, 0.5) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, hsla(300, 51%, 53%, 0.4) 0px, transparent 50%),
-    radial-gradient(at 79% 53%, hsla(270, 47%, 54%, 0.5) 0px, transparent 50%);
+    radial-gradient(at 97% 21%, hsla(300, 59%, 47%, 0.526) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(270, 56%, 47%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(0, 1%, 41%, 0.7) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(230, 47%, 49%, 0.5) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(300, 48%, 57%, 0.4) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(270, 58%, 59%, 0.5) 0px, transparent 50%);
   position: absolute;
   width: 100%;
   height: 100%;
