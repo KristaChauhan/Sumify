@@ -1,9 +1,11 @@
 # Sumify
-Smudgy is a lightweight web application that takes any URL and generates a concise summary of its content. Perfect for quickly understanding articles, blog posts, or web pages without reading the full text.
+Sumify is a lightweight web application that takes any URL and generates a concise summary of its content. Perfect for quickly understanding articles, blog posts, or web pages without reading the full text.
 
 # Features
 URL Summarization: Input a URL, get a short and precise summary.
+
 Clean and Modern UI: Simple, responsive design for easy use.
+
 Fast and Lightweight: Uses efficient algorithms to generate summaries quickly.
 
 # Demo
