@@ -17,18 +17,31 @@ Version Control: Git, GitHub
 
 # Installation
 Clone the repository:
-git clone https://github.com/KristaChauhan/Smudgy.git
+git clone https://github.com/KristaChauhan/Sumify
+
 cd Sumify
+
 Install dependencies:
+
 npm install
+
 Run the app locally:
+
 npm run dev
+
 Open your browser at http://localhost:5173 (or the port specified in the terminal).
 Usage
+
 Enter a URL in the input field.
+
 Click "Summarize" to generate a concise summary.
+
 Copy or share the summary as needed.
+
 Contributing
+
 Contributions are welcome! Feel free to submit bug fixes, features, or improvements via pull requests.
+
 License
+
 MIT License
