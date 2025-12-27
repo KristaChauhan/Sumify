@@ -9,17 +9,17 @@ body, html {
   overflow-x: hidden;
   font-family: 'Satoshi', sans-serif;
 }
-
 .main {
   width: 100vw;
   min-height: 100vh;
   position: fixed;
+  z-index: 1;   
   display: flex;
   justify-content: center;
   padding: 120px 24px 160px 24px;
   pointer-events: none;
   background: radial-gradient(circle at 20% 30%, #8459e1, #ae51e0 70%);
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Glassy gradient */
@@ -48,8 +48,17 @@ body, html {
 }
 
 /* Stars */
+/* Stars container */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
 .star {
   position: absolute;
+  width: 2px;
+  height: 2px;
   background: white;
   border-radius: 50%;
   opacity: 0.8;
@@ -89,12 +98,81 @@ body, html {
 }
 
 .submit_btn {
-  @apply hover:border-gray-400 hover:text-gray-400 absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded border border-gray-200 font-sans text-sm font-medium text-gray-400;
+  @apply absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded border border-black text-black font-sans text-sm font-medium;
 }
 
-.link_card {
-  @apply p-3 flex justify-start items-center flex-row bg-white/20 border border-gray-200 gap-3 rounded-lg cursor-pointer backdrop-blur;
+.submit_btn:hover {
+  @apply border-black text-black;
 }
+.link_card {
+  position: relative;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: transparent;
+  font-family: 'Satoshi', sans-serif;
+  color: white;
+  overflow: hidden;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.link_card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(123, 44, 191, 0.5);
+}
+
+.link_card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1a1a4d, #7b2cbf, #ff007f);
+  background-size: 300% 300%;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  z-index: 0;
+  animation: gradientMove 3s linear infinite;
+}
+
+.link_card:hover::before {
+  animation-duration: 1.2s;
+}
+
+.link_card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.link_card p {
+  flex: 1;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
+
 
 .copy_btn {
   @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
@@ -104,5 +182,55 @@ body, html {
   @apply font-black bg-gradient-to-r from-black via-purple-700 to-pink-500 bg-clip-text text-transparent;
 }
 .summary_box {
-  @apply rounded-xl border border-gray-200 bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4 text-white;
+  position: relative;
+  padding: 1rem;
+  border-radius: 24px;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: white;
+  overflow: hidden;
+  cursor: default;
+
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.summary_box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(123, 44, 191, 0.6);
+}
+
+.summary_box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #1a1a4d, #7b2cbf, #ff007f);
+  background-size: 300% 300%;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+
+  pointer-events: none;
+  z-index: 0;
+  animation: gradientMove 3s linear infinite;
+}
+
+.summary_box:hover::before {
+  animation-duration: 1.2s; /* faster gradient on hover */
+}
+
+.summary_box > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sumify
 Sumify is a lightweight web application that takes any URL and generates a concise summary of its content. Perfect for quickly understanding articles, blog posts, or web pages without reading the full text.
 
@@ -47,3 +48,5 @@ Contributions are welcome! Feel free to submit bug fixes, features, or improveme
 License
 
 MIT License
+=======
+>>>>>>> c607d19 (UI improvements: updated layout, gradients)

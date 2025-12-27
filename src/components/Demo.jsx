@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-
-import { copy, linkIcon, loader, tick } from "../assets";
+import { copy, loader,tick } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Demo = () => {
@@ -43,6 +42,7 @@ const Demo = () => {
   };
 
   return (
+     
     <section className="mt-16 w-full max-w-xl">
       {/* Search */}
       <div className="flex flex-col w-full gap-2">
@@ -50,11 +50,7 @@ const Demo = () => {
           className="relative flex justify-center items-center"
           onSubmit={handleSubmit}
         >
-          <img
-            src={linkIcon}
-            alt="link_icon"
-            className="absolute left-0 my-2 ml-3 w-5"
-          />
+          
           <input
             type="url"
             placeholder="Enter a URL"
@@ -66,7 +62,7 @@ const Demo = () => {
 
           <button
             type="submit"
-            className="submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700"
+            className="submit_btn peer-focus:border-black peer-focus:text-black"
           >
             ↵
           </button>
@@ -111,7 +107,7 @@ const Demo = () => {
           article.summary && (
             <div className="flex flex-col gap-3">
               <h2 className="font-satoshi font-bold text-gray-600 text-xl">
-                Article <span className="blue_gradient">Summary</span>
+                <span className="blue_gradient"> Article Summary</span>
               </h2>
               <div className="summary_box">
                 <p className="font-inter font-medium text-sm text-gray-700">
