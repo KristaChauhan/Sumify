@@ -12,7 +12,7 @@ export const articleApi = createApi({
         "X-RapidAPI-Host",
         "ai-article-extractor-and-summarizer.p.rapidapi.com"
       );
-      headers.set("Content-Type", application/json);
+      headers.set("Content-Type", "application/json");
 
       return headers;
     },
