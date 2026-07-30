@@ -1,4 +1,5 @@
-import { extract } from "@extractus/article-extractor";
+import { parseHTML } from "linkedom";
+import { Readability } from "@mozilla/readability";
 
 // Common English words to ignore when scoring sentence importance
 const STOPWORDS = new Set(
@@ -20,12 +21,10 @@ function decodeEntities(text) {
 function splitIntoSentences(text) {
   return (
     text
-      // strip footnote/citation markers like ↑ [1] [ 16 ] [edit] [citation needed]
       .replace(/[↑↓]|\[\s*\d+\s*\]|\[edit\]|\[citation needed\]/gi, " ")
       .replace(/\s+/g, " ")
       .match(/[^.!?]+[.!?]+/g)
       ?.map((s) => s.trim())
-      // keep only sentences that read like real prose, not headings/citations/link titles
       .filter((s) => {
         const wordCount = s.split(/\s+/).length;
         const looksLikeCitation =
@@ -41,7 +40,6 @@ function summarize(text, sentenceCount = 4) {
   const sentences = splitIntoSentences(text);
   if (sentences.length <= sentenceCount) return sentences.join(" ");
 
-  // Build word frequency table (ignoring stopwords)
   const freq = {};
   sentences.forEach((sentence) => {
     sentence
@@ -54,7 +52,6 @@ function summarize(text, sentenceCount = 4) {
       });
   });
 
-  // Score each sentence by the sum of its word frequencies, normalized by length
   const scored = sentences.map((sentence, index) => {
     const words = sentence.toLowerCase().match(/[a-z']+/g) || [];
     const score =
@@ -63,7 +60,6 @@ function summarize(text, sentenceCount = 4) {
     return { sentence, score, index };
   });
 
-  // Take the top-scoring sentences, then restore original article order
   const top = scored
     .sort((a, b) => b.score - a.score)
     .slice(0, sentenceCount)
@@ -84,20 +80,33 @@ export default async function handler(req, res) {
   }
 
   try {
-    const article = await extract(url);
+    const pageResponse = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+      },
+    });
 
-    if (!article || !article.content) {
+    if (!pageResponse.ok) {
+      return res
+        .status(422)
+        .json({ error: `Could not fetch that URL (status ${pageResponse.status}).` });
+    }
+
+    const html = await pageResponse.text();
+    const { document } = parseHTML(html);
+    const reader = new Readability(document);
+    const article = reader.parse();
+
+    if (!article || !article.textContent) {
       return res
         .status(422)
         .json({ error: "Could not extract article content from that URL." });
     }
 
-    const plainText = decodeEntities(
-      article.content.replace(/<[^>]*>/g, " ")
-    )
+    const plainText = decodeEntities(article.textContent)
       .replace(/\s+/g, " ")
       .trim()
-      // References/citations always sit at the end of the page — ignore them
       .slice(0, 6000);
 
     if (!plainText) {
